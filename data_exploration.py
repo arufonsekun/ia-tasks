@@ -8,7 +8,7 @@ def load_dataset():
 
 
 def drop_useless_columns(dataset):
-    columns = ["Hora", "Tamanho", "Referencia"]
+    columns = ["Hora", "Tamanho", "Referencia", "Delta"]
     return dataset.drop(columns, axis=1)
 
 
