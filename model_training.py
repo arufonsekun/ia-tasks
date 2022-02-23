@@ -11,7 +11,7 @@ def normalization(dataset):
     features = [
         "NumAmostra",
         "Area",
-        # "Delta",
+        # "Delta", Delta removido do dataset
         "Output1",
         "Output2"
     ]
@@ -34,7 +34,7 @@ def train_test_split(X, y):
 def model_setup():
 
     N_input = 2 # Nº de  features
-    N_hidden = 6
+    N_hidden = 8
     N_output = 2
     weights_input_hidden = np.random.normal(0, scale=0.1, size=(N_input, N_hidden))
     weights_hidden_output = np.random.normal(0, scale=0.1, size=(N_hidden, N_output))
@@ -51,7 +51,7 @@ def fit(X_train, y_train, X_test, y_test):
     learn_rate = 0.1
 
     weights_input_hidden, weights_hidden_output = model_setup()
-    epochs = 100000
+    epochs = 10000
     last_loss = None
     evolution_error = []
     index_error = []
@@ -87,7 +87,7 @@ def fit(X_train, y_train, X_test, y_test):
         weights_input_hidden += learn_rate * delta_w_i_h / n_records
         weights_hidden_output += learn_rate * delta_w_h_o / n_records
 
-        if e % (epochs / 20) == 0:
+        if e % (epochs / 10) == 0:
             hidden_output = sigmoid(np.dot(xi, weights_input_hidden))
             out = sigmoid(np.dot(hidden_output, weights_hidden_output))
             loss = np.mean((out - yi) ** 2)

@@ -8,13 +8,12 @@ def load_dataset():
 
 
 def drop_useless_columns(dataset):
-    columns = ["Hora", "Tamanho", "Referencia", "Delta"]
+    columns = ["Hora", "Tamanho", "Referencia", "Delta"] # Delta removido do Dataset
     return dataset.drop(columns, axis=1)
 
 
 def plot_amount_output2(dataset):
     sb.set_style("whitegrid")
-    # sb.set_theme(style="darkgrid")
     sb.countplot(x="Output2", data=dataset, palette='RdBu_r')
     plt.savefig("./output/countplot-amount2.png")
 
@@ -38,6 +37,4 @@ if __name__ == "__main__":
 
     # plot_amount_output2(clean_dataset)
     # dataset_pair_plot(clean_dataset)
-    heatmap(clean_dataset)
-    # print(original_dataset.head())
-    # print(clean_dataset.head())
+    # heatmap(clean_dataset)
